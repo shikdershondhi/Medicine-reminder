@@ -101,14 +101,56 @@ class _PrescriptionFormScreenState extends ConsumerState<PrescriptionFormScreen>
       await ref.read(prescriptionsProvider.notifier).addPrescription(prescription);
     }
 
+    // -----------------------------------------------------------------------
+    // Auto-import any medicines that were extracted from a scan but could not
+    // be saved because no prescription existed yet. This happens when the user
+    // taps "Create Prescription First" from the scan verify sheet.
+    // -----------------------------------------------------------------------
+    int importedCount = 0;
+    if (widget.prescriptionId == null) {
+      // Only auto-import for NEW prescriptions (not edits)
+      final pendingMeds = ref.read(pendingScanMedicinesProvider);
+      if (pendingMeds != null && pendingMeds.isNotEmpty) {
+        final baseTimestamp = DateTime.now().microsecondsSinceEpoch;
+        for (int i = 0; i < pendingMeds.length; i++) {
+          final m = pendingMeds[i];
+          final medId = '${baseTimestamp + i}_${m['name'].hashCode.abs()}';
+          final medicine = Medicine(
+            id: medId,
+            prescriptionId: id,
+            medicineNumber: 'MED-$medId',
+            name: m['name'],
+            strength: m['strength'],
+            intakePerDay: m['intakePerDay'],
+            foodRelation: m['foodRelation'],
+            startDate: DateTime.now(),
+            endDate: DateTime.now().add(Duration(days: (m['durationDays'] as int) - 1)),
+            durationDays: m['durationDays'],
+            notes: 'Extracted from OCR scan.',
+            reminderTimes: List<String>.from(m['reminderTimes']),
+            alarmEnabled: false,
+          );
+          await ref.read(medicinesProvider.notifier).saveMedicine(medicine);
+          importedCount++;
+        }
+        // Clear the pending medicines — they have been imported
+        ref.read(pendingScanMedicinesProvider.notifier).state = null;
+      }
+    }
+
     // Backup to Google Drive in the background
     ref.read(driveServiceProvider).uploadBackup();
 
     if (mounted) {
+      final message = importedCount > 0
+          ? 'Prescription created & $importedCount medicine${importedCount > 1 ? 's' : ''} imported from scan!'
+          : (widget.prescriptionId != null ? 'Prescription updated!' : 'Prescription added!');
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(widget.prescriptionId != null ? 'Prescription updated!' : 'Prescription added!'),
+          content: Text(message),
           backgroundColor: AppColors.primary,
+          duration: const Duration(seconds: 3),
         ),
       );
       context.pop();

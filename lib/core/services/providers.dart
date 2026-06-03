@@ -18,6 +18,11 @@ final notificationServiceProvider = Provider<NotificationService>((ref) => Notif
 final alarmServiceProvider = Provider<AlarmService>((ref) => AlarmService());
 final medExServiceProvider = Provider<MedExService>((ref) => MedExService());
 
+/// Temporarily holds medicines extracted from an OCR scan while the user
+/// navigates away to create a new prescription. Cleared after auto-import.
+final pendingScanMedicinesProvider =
+    StateProvider<List<Map<String, dynamic>>?>((ref) => null);
+
 // --- Theme State ---
 final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((ref) {
   final db = ref.watch(dbServiceProvider);
