@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-container-low": "#f2f4f4",
+                  "tertiary": "#9a2a00",
+                  "secondary-fixed-dim": "#cdbdff",
+                  "surface-container-lowest": "#ffffff",
+                  "on-secondary-fixed": "#20005f",
+                  "inverse-primary": "#7ad7c6",
+                  "on-error": "#ffffff",
+                  "secondary-container": "#7c4dff",
+                  "surface-dim": "#d8dada",
+                  "on-secondary": "#ffffff",
+                  "on-primary-container": "#a1feec",
+                  "on-tertiary": "#ffffff",
+                  "surface-bright": "#f8fafa",
+                  "primary-fixed-dim": "#7ad7c6",
+                  "primary": "#005e53",
+                  "outline-variant": "#bdc9c5",
+                  "on-primary-fixed": "#00201b",
+                  "secondary-fixed": "#e8deff",
+                  "tertiary-fixed": "#ffdbd0",
+                  "surface-container-highest": "#e1e3e3",
+                  "surface": "#f8fafa",
+                  "on-tertiary-fixed-variant": "#852300",
+                  "on-primary": "#ffffff",
+                  "tertiary-container": "#bd4117",
+                  "on-surface-variant": "#3e4946",
+                  "surface-container": "#eceeee",
+                  "on-secondary-fixed-variant": "#4f00d0",
+                  "outline": "#6e7a76",
+                  "on-secondary-container": "#fcf6ff",
+                  "surface-container-high": "#e6e8e8",
+                  "primary-fixed": "#97f3e2",
+                  "error": "#ba1a1a",
+                  "on-background": "#191c1d",
+                  "secondary": "#632ce5",
+                  "surface-tint": "#006b5e",
+                  "inverse-surface": "#2e3131",
+                  "on-tertiary-fixed": "#3a0a00",
+                  "primary-container": "#00796b",
+                  "on-tertiary-container": "#ffe8e2",
+                  "background": "#f8fafa",
+                  "error-container": "#ffdad6",
+                  "tertiary-fixed-dim": "#ffb59f",
+                  "on-primary-fixed-variant": "#005047",
+                  "inverse-on-surface": "#eff1f1",
+                  "on-error-container": "#93000a",
+                  "surface-variant": "#e1e3e3",
+                  "on-surface": "#191c1d"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "xs": "4px",
+                  "gutter": "16px",
+                  "lg": "24px",
+                  "container-margin": "20px",
+                  "xl": "32px",
+                  "md": "16px",
+                  "base": "8px",
+                  "sm": "12px"
+          },
+          "fontFamily": {
+                  "headline-sm": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "body-md": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "label-md": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "headline-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                  "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-shadow { box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04); }
+    .active-scale:active { transform: scale(0.98); }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top AppBar -->
+<header class="bg-surface dark:bg-on-surface flex justify-between items-center w-full px-container-margin py-base docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed">Scan Results</h1>
+</div>
+<button class="px-4 py-2 bg-surface-variant hover:bg-surface-container-highest transition-colors duration-200 rounded-full font-label-md text-label-md text-on-surface-variant">
+      Help
+    </button>
+</header>
+<main class="px-container-margin mt-lg max-w-md mx-auto">
+<!-- Image Preview Section -->
+<section class="mb-xl">
+<div class="relative group">
+<div class="w-full h-48 rounded-xl overflow-hidden custom-shadow border border-outline-variant bg-surface-container">
+<img alt="Prescription Scan" class="w-full h-full object-cover opacity-90" data-alt="A close-up, high-quality photograph of a medical prescription paper held under bright, soft clinic lighting. The paper shows professional medical handwriting and a clinic logo, partially blurred to maintain focus on the central text. The setting is a clean, modern medical office with a palette of soft teals, crisp whites, and gentle grays, conveying a sense of organized, professional healthcare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGybuHJK0QJx4_jcgef_hhape2MvAPqq3aBRN2oSch4RJI2XQR-Vb0F1U8VIx-txZc70is-tDr7ClK-zk0VS1U74Fl0jfncj7Yk9jvrnMFgUnobYaOs-Hq38ZUXqYnGtwZA2uNvYl1OmjeGu15-6IdVdryFOLOhtDUQi1VGYuXcu27D55S1tu2cldaJPjzmdjxwR-YD4NlUWzE6cIJTJFFmXz4mEDH-5JhlR6nruqYkusfAZ9Y4lfq3RafdZett8-BOmFZtcdQl1A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-md">
+<span class="text-white font-label-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+              Captured clearly
+            </span>
+</div>
+</div>
+<button class="absolute top-md right-md bg-white/90 backdrop-blur-sm p-2 rounded-full custom-shadow active-scale">
+<span class="material-symbols-outlined text-on-surface-variant">zoom_in</span>
+</button>
+</div>
+<div class="mt-md flex justify-between items-center">
+<p class="font-label-sm text-on-surface-variant">Review the extracted details below</p>
+<button class="text-secondary font-label-md hover:underline flex items-center gap-1 active-scale">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+          Retake
+        </button>
+</div>
+</section>
+<!-- Extracted Fields Section -->
+<section class="space-y-md">
+<h2 class="font-headline-sm text-headline-sm mb-base text-primary">Extracted Details</h2>
+<!-- Field: Doctor Name -->
+<div class="bg-surface-container-lowest border border-[#E0E6E6] rounded-xl p-md custom-shadow focus-within:ring-2 focus-within:ring-primary transition-all">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Doctor Name</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">person_book</span>
+<input class="w-full bg-transparent border-none p-0 font-body-md text-body-md focus:ring-0 text-on-surface" placeholder="Enter doctor name" type="text" value="Dr. Sarah Jenkins"/>
+</div>
+</div>
+<!-- Field: Date -->
+<div class="bg-surface-container-lowest border border-[#E0E6E6] rounded-xl p-md custom-shadow focus-within:ring-2 focus-within:ring-primary transition-all">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Prescription Date</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<input class="w-full bg-transparent border-none p-0 font-body-md text-body-md focus:ring-0 text-on-surface" placeholder="Enter date" type="text" value="Oct 24, 2023"/>
+</div>
+</div>
+<!-- Field: Medicine Name -->
+<div class="bg-surface-container-lowest border border-[#E0E6E6] rounded-xl p-md custom-shadow focus-within:ring-2 focus-within:ring-primary transition-all">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Medicine Name</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">medication</span>
+<input class="w-full bg-transparent border-none p-0 font-headline-sm text-headline-sm focus:ring-0 text-on-surface" placeholder="Enter medicine name" type="text" value="Amoxicillin 500mg"/>
+</div>
+</div>
+<!-- Field: Dosage -->
+<div class="bg-surface-container-lowest border border-[#E0E6E6] rounded-xl p-md custom-shadow focus-within:ring-2 focus-within:ring-primary transition-all">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Dosage Instructions</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<input class="w-full bg-transparent border-none p-0 font-body-md text-body-md focus:ring-0 text-on-surface" placeholder="Enter instructions" type="text" value="1 capsule, three times daily"/>
+</div>
+</div>
+<!-- Field: Duration (Extra context for completeness) -->
+<div class="bg-surface-container-lowest border border-[#E0E6E6] rounded-xl p-md custom-shadow focus-within:ring-2 focus-within:ring-primary transition-all">
+<label class="block font-label-sm text-on-surface-variant mb-xs">Duration</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">event_repeat</span>
+<input class="w-full bg-transparent border-none p-0 font-body-md text-body-md focus:ring-0 text-on-surface" placeholder="Enter duration" type="text" value="7 Days"/>
+</div>
+</div>
+</section>
+<!-- Info Chip -->
+<div class="mt-lg flex items-start gap-3 p-md bg-secondary-fixed text-on-secondary-fixed-variant rounded-xl border border-secondary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">info</span>
+<p class="font-label-sm">Please verify the AI-extracted data against your physical prescription to ensure clinical accuracy.</p>
+</div>
+</main>
+<!-- Sticky Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 bg-surface-container border-t border-outline-variant p-container-margin pb-8 z-50 flex flex-col gap-3">
+<button class="w-full py-4 bg-secondary-container text-on-secondary-container rounded-full font-headline-sm text-headline-sm custom-shadow active-scale flex justify-center items-center gap-2 transition-all hover:brightness-110">
+<span class="material-symbols-outlined" data-weight="fill">check_circle</span>
+      Confirm &amp; Add
+    </button>
+<button class="w-full py-4 bg-surface-container-highest text-on-surface-variant rounded-full font-label-md text-label-md active-scale transition-colors hover:bg-outline-variant/30">
+      Save as Draft
+    </button>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.parentElement.classList.add('ring-2', 'ring-primary', 'border-primary');
+      });
+      input.addEventListener('blur', () => {
+        input.parentElement.parentElement.classList.remove('ring-2', 'ring-primary', 'border-primary');
+      });
+    });
+
+    // Subtle entrance animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const fields = document.querySelectorAll('section > div, section > h2');
+      fields.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          el.style.transition = 'all 0.4s ease-out';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, index * 80);
+      });
+    });
+  </script>
+</body></html>

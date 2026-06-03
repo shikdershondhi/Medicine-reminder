@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MedTrack - Health Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#bd4117",
+                        "surface-bright": "#f8fafa",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdbd0",
+                        "surface-tint": "#006b5e",
+                        "secondary-container": "#7c4dff",
+                        "surface-container": "#eceeee",
+                        "on-secondary-container": "#fcf6ff",
+                        "on-error-container": "#93000a",
+                        "outline": "#6e7a76",
+                        "on-surface-variant": "#3e4946",
+                        "on-tertiary-container": "#ffe8e2",
+                        "on-primary-fixed-variant": "#005047",
+                        "on-surface": "#191c1d",
+                        "surface-dim": "#d8dada",
+                        "secondary-fixed": "#e8deff",
+                        "error": "#ba1a1a",
+                        "secondary": "#632ce5",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#eff1f1",
+                        "background": "#f8fafa",
+                        "primary-fixed-dim": "#7ad7c6",
+                        "surface-container-high": "#e6e8e8",
+                        "on-primary-container": "#a1feec",
+                        "tertiary": "#9a2a00",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e3",
+                        "surface-container-low": "#f2f4f4",
+                        "secondary-fixed-dim": "#cdbdff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#7ad7c6",
+                        "on-tertiary-fixed-variant": "#852300",
+                        "outline-variant": "#bdc9c5",
+                        "surface-container-highest": "#e1e3e3",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "on-background": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8fafa",
+                        "primary-fixed": "#97f3e2",
+                        "on-secondary-fixed": "#20005f",
+                        "on-secondary-fixed-variant": "#4f00d0",
+                        "inverse-surface": "#2e3131",
+                        "on-secondary": "#ffffff",
+                        "primary": "#005e53",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "primary-container": "#00796b",
+                        "on-primary-fixed": "#00201b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "container-margin": "20px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "base": "8px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .custom-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        .active-interaction:active {
+            transform: scale(0.95);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<nav class="docked full-width top-0 bg-surface dark:bg-on-surface flex justify-between items-center w-full px-container-margin py-base z-50 sticky">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden border-2 border-primary-fixed">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly man with a warm smile, wearing a clean white clinical shirt. The lighting is soft and high-key, creating a bright and trustworthy atmosphere. The background is a minimalist medical office with soft teal accents, maintaining a professional yet approachable corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6x2KzTUxzXr4A0H31DDFG5aCtIYczRT6kqhTavBYaJw-nDm6ZNjOYngFYx3X0K3-woDybNTMl_1mfWX0s1RihDql9HUIp5ccVaC5mrlEDn5agGZ1GIvp9YQvXQ8ndfys3L6k19bwC_KhXH9S_-0szRdCIXRo6DYnMsMe_4RHbG4rDmvLkBo5BM_Bk1VCIRfJCyrJhuPd_OQ6H3tvZuPQc_uTRtkJNgAcQiA6rsq9Sim18n4sHii-vuYiKxTFcKOGlkozxGAB3twg"/>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">MedTrack</h1>
+</div>
+<button class="bg-surface-container-high text-primary font-label-md text-label-md px-lg py-sm rounded-full active-interaction transition-colors duration-200 hover:bg-surface-variant">
+            Sync
+        </button>
+</nav>
+<main class="px-container-margin pt-lg space-y-xl max-w-2xl mx-auto">
+<!-- Greeting Section -->
+<header class="space-y-xs">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Hello, Alex.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">You have 2 doses remaining today.</p>
+</header>
+<!-- Progress Overview (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-lg rounded-xl custom-shadow border border-outline-variant space-y-md">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Overall Progress</span>
+<span class="text-primary font-label-md text-label-md">65%</span>
+</div>
+<div class="w-full bg-surface-variant h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 65%;"></div>
+</div>
+</div>
+<div class="bg-secondary-container p-lg rounded-xl custom-shadow space-y-xs text-on-secondary-container">
+<p class="font-label-sm text-label-sm opacity-90 uppercase tracking-wider">Next Dose</p>
+<h3 class="font-headline-sm text-headline-sm">Lisinopril</h3>
+<p class="font-label-md text-label-md">Today at 8:00 PM</p>
+</div>
+</section>
+<!-- Today's Schedule -->
+<section class="space-y-md">
+<div class="flex justify-between items-end">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Today's Schedule</h3>
+<span class="font-label-sm text-label-sm text-primary uppercase">View History</span>
+</div>
+<div class="space-y-md">
+<!-- Card: Amoxicillin (Taken) -->
+<div class="bg-surface-container-lowest p-md rounded-xl custom-shadow border border-outline-variant flex items-center gap-md relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary opacity-20"></div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medication</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Amoxicillin</h4>
+<span class="bg-surface-container px-sm py-xs rounded-full text-primary font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                Taken
+                            </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">8:00 AM • Before Food</p>
+</div>
+</div>
+<!-- Card: Lisinopril (Pending) -->
+<div class="bg-surface-container-lowest p-md rounded-xl custom-shadow border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">pill</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Lisinopril</h4>
+<button class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-lg py-sm rounded-full active-interaction shadow-sm">
+                                Take
+                            </button>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">8:00 PM • After Food</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Prescription Progress -->
+<section class="space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Prescription Progress</h3>
+<div class="space-y-lg bg-surface-container-low p-lg rounded-xl border border-outline-variant">
+<!-- Amoxicillin Refill -->
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Amoxicillin</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Day 5 of 10</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 50%;"></div>
+</div>
+</div>
+<!-- Lisinopril Refill -->
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Lisinopril</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Day 15 of 30</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 50%;"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-container-margin bg-surface-container dark:bg-surface-container-highest docked full-width bottom-0 rounded-t-xl shadow-sm border-t border-outline-variant dark:border-outline">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-full px-4 py-1 active-interaction" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">medication</span>
+<span class="font-label-sm text-label-sm">Prescriptions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for Take button
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.innerText === 'Take') {
+                    const originalText = this.innerText;
+                    this.innerText = 'Dose Taken!';
+                    this.classList.replace('bg-secondary-container', 'bg-primary-container');
+                    this.classList.replace('text-on-secondary-container', 'text-on-primary-container');
+                    
+                    setTimeout(() => {
+                        this.closest('.bg-surface-container-lowest').style.opacity = '0.7';
+                        this.style.display = 'none';
+                        // Ideally we'd trigger a confetti or success feedback here
+                    }, 800);
+                }
+            });
+        });
+    </script>
+</body></html>

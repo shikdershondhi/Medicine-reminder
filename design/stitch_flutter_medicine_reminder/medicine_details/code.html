@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MedTrack - Edit Medicine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#bd4117",
+                        "surface-bright": "#f8fafa",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdbd0",
+                        "surface-tint": "#006b5e",
+                        "secondary-container": "#7c4dff",
+                        "surface-container": "#eceeee",
+                        "on-secondary-container": "#fcf6ff",
+                        "on-error-container": "#93000a",
+                        "outline": "#6e7a76",
+                        "on-surface-variant": "#3e4946",
+                        "on-tertiary-container": "#ffe8e2",
+                        "on-primary-fixed-variant": "#005047",
+                        "on-surface": "#191c1d",
+                        "surface-dim": "#d8dada",
+                        "secondary-fixed": "#e8deff",
+                        "error": "#ba1a1a",
+                        "secondary": "#632ce5",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#eff1f1",
+                        "background": "#f8fafa",
+                        "primary-fixed-dim": "#7ad7c6",
+                        "surface-container-high": "#e6e8e8",
+                        "on-primary-container": "#a1feec",
+                        "tertiary": "#9a2a00",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e3",
+                        "surface-container-low": "#f2f4f4",
+                        "secondary-fixed-dim": "#cdbdff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#7ad7c6",
+                        "on-tertiary-fixed-variant": "#852300",
+                        "outline-variant": "#bdc9c5",
+                        "surface-container-highest": "#e1e3e3",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "on-background": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8fafa",
+                        "primary-fixed": "#97f3e2",
+                        "on-secondary-fixed": "#20005f",
+                        "on-secondary-fixed-variant": "#4f00d0",
+                        "inverse-surface": "#2e3131",
+                        "on-secondary": "#ffffff",
+                        "primary": "#005e53",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "primary-container": "#00796b",
+                        "on-primary-fixed": "#00201b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "container-margin": "20px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "base": "8px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E0E6E6;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-20 md:pb-0">
+<!-- Top Navigation -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center w-full px-container-margin py-base">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">MedTrack</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-md text-label-md text-primary px-4 py-2 hover:bg-surface-variant rounded-full transition-colors">Sync</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border-2 border-outline-variant">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8mjbWvuZ_IpKvVxqtuZaETIoTZEL9loIz0G_O3fgoW3DA8S3lN9KOfC9QtlFaudaxxFLq6xva3O4uegwlHVwcMXBG7fJbJMxV5HJDDdOnxfafPGf89r9IRXAnSgtgjwQF6nRwV8IY2Y5ddpHz5GHCSaD08hZQvuXAm47W3E2XQEwCtLgwD85g9gnEoHp9T8h8w1WbrDLTJaOOB8I8omIrg5kHLhUY863ICZVIGqF1jpzLlxYRXGEl41voBoyBOseFM2_bmuDnGw0"/>
+</div>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-container-margin py-lg space-y-xl">
+<!-- Header Section -->
+<section class="space-y-base">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Add New Medication</h2>
+<p class="text-on-surface-variant font-body-md">Ensure clinical accuracy for your health safety.</p>
+</section>
+<!-- Form Section -->
+<form class="space-y-lg" id="medicineForm">
+<!-- Medication Name -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="medicineName">Medicine Name</label>
+<input class="w-full bg-surface-container-lowest border-outline-variant rounded-xl p-4 font-headline-sm text-headline-sm focus:ring-2 focus:ring-primary focus:border-primary form-input-shadow transition-all" id="medicineName" oninput="updatePreview()" placeholder="e.g., Amoxicillin" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Dose Frequency -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="frequency">Dose Frequency (Times/Day)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-outline-variant rounded-xl p-4 font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-primary form-input-shadow" id="frequency" max="12" min="1" type="number" value="1"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+<span class="material-symbols-outlined text-outline-variant scale-75">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- Duration -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="duration">Duration (Days)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-outline-variant rounded-xl p-4 font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-primary form-input-shadow" id="duration" placeholder="e.g., 7" type="number"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-sm">Days</div>
+</div>
+</div>
+</div>
+<!-- Timing Selector -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Timing Advice</label>
+<div class="flex gap-md">
+<label class="flex-1 cursor-pointer group">
+<input checked="" class="hidden peer" name="timing" onchange="updatePreview()" type="radio" value="before"/>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl border border-outline-variant bg-surface-container-lowest peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all group-hover:bg-surface-variant">
+<span class="material-symbols-outlined mb-2">restaurant</span>
+<span class="font-label-md text-label-md">Before Eating</span>
+</div>
+</label>
+<label class="flex-1 cursor-pointer group">
+<input class="hidden peer" name="timing" onchange="updatePreview()" type="radio" value="after"/>
+<div class="flex flex-col items-center justify-center p-4 rounded-xl border border-outline-variant bg-surface-container-lowest peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary transition-all group-hover:bg-surface-variant">
+<span class="material-symbols-outlined mb-2">flatware</span>
+<span class="font-label-md text-label-md">After Eating</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Reminders Toggle Section -->
+<div class="p-lg bg-surface-container-low rounded-xl border border-outline-variant space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">notifications_active</span>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Reminders</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Smart alerts for every dose</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="reminderToggle" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex gap-4 pt-4 border-t border-outline-variant">
+<button class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border border-secondary text-secondary font-label-md hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">vibration</span>
+                        Local Push
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg bg-secondary text-on-secondary font-label-md hover:opacity-90 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[18px]">alarm</span>
+                        Critical Alarm
+                    </button>
+</div>
+</div>
+<!-- Notification Preview -->
+<div class="space-y-xs opacity-90" id="previewContainer">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Notification Preview</label>
+<div class="bg-inverse-surface text-inverse-on-surface rounded-2xl p-md flex gap-md items-center shadow-lg border border-white/10">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary">medication</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md opacity-70">MedTrack</span>
+<span class="text-[10px] opacity-50 uppercase tracking-widest font-bold">Now</span>
+</div>
+<p class="font-headline-sm text-headline-sm truncate" id="previewName">Time for Dose</p>
+<p class="font-body-md text-on-surface-variant brightness-150" id="previewTiming">Please take your medication.</p>
+</div>
+</div>
+</div>
+<!-- Text Areas -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="notes">Notes</label>
+<textarea class="w-full bg-surface-container-lowest border-outline-variant rounded-xl p-4 font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary form-input-shadow resize-none" id="notes" placeholder="e.g., Take with a full glass of water" rows="3"></textarea>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="advice">Doctor's Advice</label>
+<textarea class="w-full bg-surface-container-lowest border-outline-variant rounded-xl p-4 font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary form-input-shadow resize-none" id="advice" placeholder="Clinical instructions..." rows="3"></textarea>
+</div>
+</div>
+<!-- Decorative Visual Context -->
+<div class="relative w-full h-48 rounded-2xl overflow-hidden shadow-sm border border-outline-variant">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+<img class="w-full h-full object-cover" data-alt="A macro photograph of white pharmaceutical pills scattered artfully on a clean, light teal clinical surface. The lighting is bright and airy, following a modern medical aesthetic. Soft focus in the background creates a sense of depth and cleanliness. The overall mood is professional, sterile, and reliable, utilizing a palette of cool whites and subtle teal shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpXdrS0uvSoyVdQktccSBW-yU2mtQ6nm9y09lxbITYLIGRcK0GZiVgoR-hYVE4PDZWetkSQZ0M4nypdIPiPI03lLQji16Twzp4PZD-X3NvJx8hDczuJpqWBxfv3TnSkoySlz8hlg5X-Z-DnAcbNE5eWXOdXJRxCqjrw16YheV7W08XdRImvNFU6Cj-REk_-QF6BNg7buaWruic7m97EcUKRmgyKzmp7oHXufoiiLDQa6Y2hdnjCHq_9aoqNgQKsHTbr_EoroNXpm8"/>
+<div class="absolute bottom-4 left-4 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+<span class="text-label-sm font-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Clinical Compliance
+                    </span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full py-5 bg-secondary-container text-on-secondary-container font-headline-md text-headline-md rounded-xl shadow-md hover:shadow-xl active:scale-[0.98] transition-all flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+                Save Medication
+            </button>
+</form>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-container-margin bg-surface-container border-t border-outline-variant shadow-sm rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medication</span>
+<span class="font-label-sm text-label-sm">Prescriptions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function updatePreview() {
+            const nameInput = document.getElementById('medicineName');
+            const previewName = document.getElementById('previewName');
+            const previewTiming = document.getElementById('previewTiming');
+            const timingRadios = document.getElementsByName('timing');
+            
+            let timingText = "Before eating";
+            for(const radio of timingRadios) {
+                if(radio.checked) {
+                    timingText = radio.value === 'before' ? 'Take before eating' : 'Take after eating';
+                    break;
+                }
+            }
+
+            previewName.textContent = nameInput.value.trim() !== '' ? nameInput.value : 'Time for Dose';
+            previewTiming.textContent = timingText + '. Don\'t forget your health routine.';
+        }
+
+        // Initialize preview on load
+        document.addEventListener('DOMContentLoaded', updatePreview);
+
+        // Simple form handling
+        document.getElementById('medicineForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Saved Successfully';
+                btn.classList.replace('bg-secondary-container', 'bg-primary-container');
+                btn.classList.replace('text-on-secondary-container', 'text-on-primary-container');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.replace('bg-primary-container', 'bg-secondary-container');
+                    btn.classList.replace('text-on-primary-container', 'text-on-secondary-container');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+
+        // Trigger update on timing change
+        document.querySelectorAll('input[name="timing"]').forEach(radio => {
+            radio.addEventListener('change', updatePreview);
+        });
+    </script>
+</body></html>

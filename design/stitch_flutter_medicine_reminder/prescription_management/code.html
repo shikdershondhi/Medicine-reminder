@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prescription Management - MedTrack</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#bd4117",
+                      "surface-bright": "#f8fafa",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#ffdbd0",
+                      "surface-tint": "#006b5e",
+                      "secondary-container": "#7c4dff",
+                      "surface-container": "#eceeee",
+                      "on-secondary-container": "#fcf6ff",
+                      "on-error-container": "#93000a",
+                      "outline": "#6e7a76",
+                      "on-surface-variant": "#3e4946",
+                      "on-tertiary-container": "#ffe8e2",
+                      "on-primary-fixed-variant": "#005047",
+                      "on-surface": "#191c1d",
+                      "surface-dim": "#d8dada",
+                      "secondary-fixed": "#e8deff",
+                      "error": "#ba1a1a",
+                      "secondary": "#632ce5",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#eff1f1",
+                      "background": "#f8fafa",
+                      "primary-fixed-dim": "#7ad7c6",
+                      "surface-container-high": "#e6e8e8",
+                      "on-primary-container": "#a1feec",
+                      "tertiary": "#9a2a00",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e1e3e3",
+                      "surface-container-low": "#f2f4f4",
+                      "secondary-fixed-dim": "#cdbdff",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#7ad7c6",
+                      "on-tertiary-fixed-variant": "#852300",
+                      "outline-variant": "#bdc9c5",
+                      "surface-container-highest": "#e1e3e3",
+                      "tertiary-fixed-dim": "#ffb59f",
+                      "on-background": "#191c1d",
+                      "on-primary": "#ffffff",
+                      "surface": "#f8fafa",
+                      "primary-fixed": "#97f3e2",
+                      "on-secondary-fixed": "#20005f",
+                      "on-secondary-fixed-variant": "#4f00d0",
+                      "inverse-surface": "#2e3131",
+                      "on-secondary": "#ffffff",
+                      "primary": "#005e53",
+                      "on-tertiary-fixed": "#3a0a00",
+                      "primary-container": "#00796b",
+                      "on-primary-fixed": "#00201b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "container-margin": "20px",
+                      "sm": "12px",
+                      "lg": "24px",
+                      "base": "8px",
+                      "xl": "32px",
+                      "xs": "4px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-bg {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-depth {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #E0E6E6;
+        }
+        .fab-shadow {
+            box-shadow: 0px 8px 30px rgba(124, 77, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-on-surface docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full px-container-margin py-base h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly middle-aged man with a warm smile, representing a healthcare user. The lighting is soft and high-key, creating a clean, modern aesthetic that fits a calm medical application. The background is a soft, out-of-focus neutral gray, maintaining a minimalist and corporate feel consistent with a reliable health platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArdgfEdtYS5J2DU0tseYD7xj95b43dKWqA7kUpdKufUakMSiSwlgwCjE6s-Rt4EHefk_xcwiyKAwL7ieZPhMkhrZoy-jHAp3c3gXm98PHFYUAExDC5OfxZxJbGfWj7CGlzb1uGNt6-_fn0NWUoXtwDf9QibTkNeZHeu-5K6H3b5tSjAVMeL2awlBTsA2rvbhWI_ODZfcj_W91vzkKbXgVfKeYikARoaGeF7YHbClIENBnR2Wu2KmUOUAV5VjN2SjLyDJMlvX93M8E"/>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">MedTrack</h1>
+</div>
+<button class="bg-surface-variant dark:bg-surface-container-highest text-primary dark:text-primary-fixed px-4 py-2 rounded-full font-label-md transition-colors duration-200 hover:bg-opacity-80">
+                Sync
+            </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="px-container-margin pt-lg">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Prescriptions</h2>
+<p class="text-on-surface-variant font-body-md mt-1">Manage your medical history</p>
+</div>
+</div>
+<!-- Empty State Container (Hidden by default if data exists) -->
+<div class="hidden flex flex-col items-center justify-center py-xl text-center" id="empty-state">
+<div class="w-64 h-64 mb-lg rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[80px] text-outline-variant">description</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">No prescriptions yet</h3>
+<p class="text-on-surface-variant font-body-md mt-base max-w-[280px]">Keep track of your health visits and medicines in one place.</p>
+</div>
+<!-- Prescriptions List -->
+<div class="space-y-lg" id="prescriptions-list">
+<!-- Date Group: October 2023 -->
+<div class="space-y-md">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">October 2023</span>
+<!-- Prescription Card 1 -->
+<div class="card-depth bg-surface-container-lowest rounded-xl p-md flex flex-col gap-md relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">General Checkup</h4>
+<p class="text-on-surface-variant font-label-md">Dr. Smith • Family Medicine</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 rounded-full hover:bg-error-container text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Oct 12, 2023</span>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="pill">pill</span>
+<span class="font-label-sm text-label-sm">4 Medicines</span>
+</div>
+</div>
+</div>
+<!-- Prescription Card 2 -->
+<div class="card-depth bg-surface-container-lowest rounded-xl p-md flex flex-col gap-md relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="dentistry">dentistry</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Dental Cleaning</h4>
+<p class="text-on-surface-variant font-label-md">Dr. Sarah Johnson</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 rounded-full hover:bg-error-container text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Oct 05, 2023</span>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="pill">pill</span>
+<span class="font-label-sm text-label-sm">1 Medicine</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Date Group: September 2023 -->
+<div class="space-y-md">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">September 2023</span>
+<!-- Prescription Card 3 -->
+<div class="card-depth bg-surface-container-lowest rounded-xl p-md flex flex-col gap-md relative overflow-hidden group">
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="eye_tracking">eye_tracking</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Eye Examination</h4>
+<p class="text-on-surface-variant font-label-md">Dr. Emily Chen</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 rounded-full hover:bg-error-container text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Sep 22, 2023</span>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="pill">pill</span>
+<span class="font-label-sm text-label-sm">2 Medicines</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-container-margin w-16 h-16 bg-secondary-container text-on-secondary-container rounded-2xl fab-shadow flex items-center justify-center transition-all active:scale-95 z-40">
+<span class="material-symbols-outlined text-[32px]" data-icon="add">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-container-margin bg-surface-container dark:bg-surface-container-highest rounded-t-xl shadow-sm border-t border-outline-variant dark:border-outline">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<!-- Prescriptions (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-full px-4 py-1 active:scale-95 duration-150 active-nav-bg" href="#">
+<span class="material-symbols-outlined" data-icon="medication" style="font-variation-settings: 'FILL' 1;">medication</span>
+<span class="font-label-sm text-label-sm">Prescriptions</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Scale effect on cards when clicked (excluding buttons)
+        document.querySelectorAll('#prescriptions-list > div > div').forEach(card => {
+            card.addEventListener('mousedown', function(e) {
+                if (!e.target.closest('button')) {
+                    this.style.transform = 'scale(0.98)';
+                    this.style.transition = 'transform 0.1s ease';
+                }
+            });
+            card.addEventListener('mouseup', function() {
+                this.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Demo logic: Toggle empty state
+        function toggleEmptyState(isEmpty) {
+            const list = document.getElementById('prescriptions-list');
+            const empty = document.getElementById('empty-state');
+            if(isEmpty) {
+                list.classList.add('hidden');
+                empty.classList.remove('hidden');
+            } else {
+                list.classList.remove('hidden');
+                empty.classList.add('hidden');
+            }
+        }
+
+        // Add a subtle entrance animation to the list items
+        window.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('#prescriptions-list > div');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(10px)';
+                item.style.transition = `all 0.4s ease ${index * 0.1}s`;
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

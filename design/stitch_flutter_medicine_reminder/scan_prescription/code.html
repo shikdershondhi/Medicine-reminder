@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f2f4f4",
+                    "tertiary": "#9a2a00",
+                    "secondary-fixed-dim": "#cdbdff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#20005f",
+                    "inverse-primary": "#7ad7c6",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#7c4dff",
+                    "surface-dim": "#d8dada",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#a1feec",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8fafa",
+                    "primary-fixed-dim": "#7ad7c6",
+                    "primary": "#005e53",
+                    "outline-variant": "#bdc9c5",
+                    "on-primary-fixed": "#00201b",
+                    "secondary-fixed": "#e8deff",
+                    "tertiary-fixed": "#ffdbd0",
+                    "surface-container-highest": "#e1e3e3",
+                    "surface": "#f8fafa",
+                    "on-tertiary-fixed-variant": "#852300",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#bd4117",
+                    "on-surface-variant": "#3e4946",
+                    "surface-container": "#eceeee",
+                    "on-secondary-fixed-variant": "#4f00d0",
+                    "outline": "#6e7a76",
+                    "on-secondary-container": "#fcf6ff",
+                    "surface-container-high": "#e6e8e8",
+                    "primary-fixed": "#97f3e2",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1d",
+                    "secondary": "#632ce5",
+                    "surface-tint": "#006b5e",
+                    "inverse-surface": "#2e3131",
+                    "on-tertiary-fixed": "#3a0a00",
+                    "primary-container": "#00796b",
+                    "on-tertiary-container": "#ffe8e2",
+                    "background": "#f8fafa",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb59f",
+                    "on-primary-fixed-variant": "#005047",
+                    "inverse-on-surface": "#eff1f1",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e1e3e3",
+                    "on-surface": "#191c1d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "lg": "24px",
+                    "container-margin": "20px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "base": "8px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .viewfinder-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #97f3e2; /* primary-fixed */
+            border-width: 4px;
+        }
+        .v-top-left { top: 0; left: 0; border-right: 0; border-bottom: 0; border-top-left-radius: 12px; }
+        .v-top-right { top: 0; right: 0; border-left: 0; border-bottom: 0; border-top-right-radius: 12px; }
+        .v-bottom-left { bottom: 0; left: 0; border-right: 0; border-top: 0; border-bottom-left-radius: 12px; }
+        .v-bottom-right { bottom: 0; right: 0; border-left: 0; border-top: 0; border-bottom-right-radius: 12px; }
+        
+        .scanning-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #97f3e2, transparent);
+            box-shadow: 0 0 15px #97f3e2;
+            animation: scan 3s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .camera-shutter-active:active {
+            transform: scale(0.9);
+            transition: transform 0.1s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black overflow-hidden select-none">
+<!-- Top Navigation (Contextually Suppressed Shared Component Mock) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin py-lg bg-gradient-to-b from-black/60 to-transparent">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white transition-colors hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<div class="flex gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white transition-colors hover:bg-white/20" id="flash-toggle">
+<span class="material-symbols-outlined" data-icon="flash_off">flash_off</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white transition-colors hover:bg-white/20">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Camera Canvas -->
+<main class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+<!-- Simulated Live Camera Background -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-80" data-alt="A professional, clean, and high-resolution close-up of a medical prescription paper lying on a neutral surface. The lighting is bright and clinically clear, emphasizing high legibility and medical precision. The overall aesthetic follows a modern healthcare UI style with a soft, calming atmosphere and a professional teal-tinted lighting effect that creates a sense of trust and accuracy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn0EtlWESMQMmJldzHS82P4SSK7qXOWBT2nB4W38AedNVs8kMklMI6NBTqarY3ykpkNVRJUK8-PtWEqH9jmAeQFoj6NVUnCHlrpJSQNDgjKY5mgUllsDPMjTLiBdL_IUaLhRGeIMqJVRq7Vd5x3RuH5jxvAn0BSJH-uW1BI9U9RCCIHTixKYpXCuE0MWrxCnDaF6Lscuqm1Ma4hFY58q0Rg03-0stjJJHEYw0ktH1cUEcMaWJZm2Pc_zmpVi6M2plaBr-vYqnN4i8"/>
+<!-- Tonal Overlay for Focus -->
+<div class="absolute inset-0 bg-black/30"></div>
+</div>
+<!-- Viewfinder Overlay -->
+<div class="relative z-10 w-[85%] aspect-[3/4] max-w-sm">
+<div class="absolute inset-0">
+<div class="viewfinder-corner v-top-left"></div>
+<div class="viewfinder-corner v-top-right"></div>
+<div class="viewfinder-corner v-bottom-left"></div>
+<div class="viewfinder-corner v-bottom-right"></div>
+<div class="scanning-line"></div>
+</div>
+<!-- Instruction Text -->
+<div class="absolute -top-16 left-0 right-0 text-center">
+<p class="font-label-md text-label-md text-white tracking-wide bg-black/40 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-white/10">
+                    Align the prescription within the frame.
+                </p>
+</div>
+</div>
+<!-- Health Status/Visual Feedback (Micro-interaction layer) -->
+<div class="absolute top-1/4 z-20 opacity-0 transform -translate-y-4 transition-all duration-300" id="feedback-toast">
+<div class="bg-primary text-on-primary px-lg py-sm rounded-xl font-label-md text-label-md flex items-center gap-xs shadow-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+                Document Detected
+            </div>
+</div>
+</main>
+<!-- Camera Controls (Bottom Bar) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-xl pb-10 px-container-margin">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<!-- Gallery Picker -->
+<button class="flex flex-col items-center gap-xs group">
+<div class="w-12 h-12 rounded-lg border-2 border-white/20 overflow-hidden transition-transform group-hover:scale-105 group-active:scale-95">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A small square thumbnail of medical pill bottles in a clean laboratory setting. The lighting is clinical and bright with professional teal and white tones. The image represents a high-end medical gallery collection with a calm and reliable atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC7NdMIhvZi1XEDCOUXnPABKPsUtyoiah-mph-qIWnH7QpMwBmE_pdxPtUTty8dr7jE4huupG68Z44kAwXkVmUM8UXV41ff43dMsVL6SGnZgobJSS77ZHyeSeJk4MNDDPZsnBbXOHglSycTWO1l3tSyC6IKTNn0vke2mtULMUf1qckaahzAYUrlzpDQ8m4G7Irf8BBbo-6bLHtQXoD1D1KrW3Vjt5AAwq21aTEt6bORNVPmOizfpLhvcw11hOuxYw_YZdnUJYqfMY"/>
+</div>
+<span class="font-label-sm text-label-sm text-white/70">Gallery</span>
+</button>
+<!-- Shutter Button -->
+<div class="relative flex items-center justify-center">
+<!-- Shutter outer ring -->
+<div class="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center">
+<!-- Inner active button -->
+<button class="camera-shutter-active w-[64px] h-[64px] rounded-full bg-secondary transition-all hover:bg-secondary-container shadow-xl" id="shutter-btn">
+</button>
+</div>
+</div>
+<!-- Manual Entry / Mode Toggle -->
+<button class="flex flex-col items-center gap-xs group">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-white transition-transform group-hover:scale-105 group-active:scale-95">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+</div>
+<span class="font-label-sm text-label-sm text-white/70">Manual</span>
+</button>
+</div>
+<!-- Mode Indicator -->
+<div class="mt-xl flex justify-center gap-lg">
+<span class="font-label-md text-label-md text-primary-fixed border-b-2 border-primary-fixed pb-1">SCAN</span>
+<span class="font-label-md text-label-md text-white/50 pb-1 cursor-pointer hover:text-white transition-colors">HISTORY</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions and UI State
+        const shutterBtn = document.getElementById('shutter-btn');
+        const flashToggle = document.getElementById('flash-toggle');
+        const feedbackToast = document.getElementById('feedback-toast');
+
+        // Simulate Shutter Capture
+        shutterBtn.addEventListener('click', () => {
+            // Screen Flash Effect
+            const flash = document.createElement('div');
+            flash.className = 'fixed inset-0 bg-white z-[100] transition-opacity duration-300';
+            document.body.appendChild(flash);
+            
+            setTimeout(() => {
+                flash.style.opacity = '0';
+                setTimeout(() => flash.remove(), 300);
+            }, 50);
+
+            // Mock success feedback
+            feedbackToast.classList.remove('opacity-0', '-translate-y-4');
+            feedbackToast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                feedbackToast.classList.add('opacity-0', '-translate-y-4');
+                feedbackToast.classList.remove('opacity-100', 'translate-y-0');
+            }, 2500);
+        });
+
+        // Flash Toggle State
+        let isFlashOn = false;
+        flashToggle.addEventListener('click', () => {
+            isFlashOn = !isFlashOn;
+            const icon = flashToggle.querySelector('span');
+            if(isFlashOn) {
+                icon.innerText = 'flash_on';
+                flashToggle.classList.add('bg-secondary-container', 'text-on-secondary-container');
+                flashToggle.classList.remove('bg-white/10', 'text-white');
+            } else {
+                icon.innerText = 'flash_off';
+                flashToggle.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+                flashToggle.classList.add('bg-white/10', 'text-white');
+            }
+        });
+
+        // Simulate Document Detection after 1s
+        setTimeout(() => {
+            const viewfinder = document.querySelector('.viewfinder-corner');
+            // Change color to secondary to signal detection
+            document.querySelectorAll('.viewfinder-corner').forEach(corner => {
+                corner.style.borderColor = '#7c4dff'; // secondary-container
+                corner.style.transition = 'border-color 0.5s ease';
+            });
+        }, 1200);
+    </script>
+</body></html>

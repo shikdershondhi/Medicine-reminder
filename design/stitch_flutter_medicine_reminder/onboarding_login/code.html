@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#bd4117",
+            "surface-bright": "#f8fafa",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed": "#ffdbd0",
+            "surface-tint": "#006b5e",
+            "secondary-container": "#7c4dff",
+            "surface-container": "#eceeee",
+            "on-secondary-container": "#fcf6ff",
+            "on-error-container": "#93000a",
+            "outline": "#6e7a76",
+            "on-surface-variant": "#3e4946",
+            "on-tertiary-container": "#ffe8e2",
+            "on-primary-fixed-variant": "#005047",
+            "on-surface": "#191c1d",
+            "surface-dim": "#d8dada",
+            "secondary-fixed": "#e8deff",
+            "error": "#ba1a1a",
+            "secondary": "#632ce5",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#eff1f1",
+            "background": "#f8fafa",
+            "primary-fixed-dim": "#7ad7c6",
+            "surface-container-high": "#e6e8e8",
+            "on-primary-container": "#a1feec",
+            "tertiary": "#9a2a00",
+            "on-error": "#ffffff",
+            "surface-variant": "#e1e3e3",
+            "surface-container-low": "#f2f4f4",
+            "secondary-fixed-dim": "#cdbdff",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#7ad7c6",
+            "on-tertiary-fixed-variant": "#852300",
+            "outline-variant": "#bdc9c5",
+            "surface-container-highest": "#e1e3e3",
+            "tertiary-fixed-dim": "#ffb59f",
+            "on-background": "#191c1d",
+            "on-primary": "#ffffff",
+            "surface": "#f8fafa",
+            "primary-fixed": "#97f3e2",
+            "on-secondary-fixed": "#20005f",
+            "on-secondary-fixed-variant": "#4f00d0",
+            "inverse-surface": "#2e3131",
+            "on-secondary": "#ffffff",
+            "primary": "#005e53",
+            "on-tertiary-fixed": "#3a0a00",
+            "primary-container": "#00796b",
+            "on-primary-fixed": "#00201b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "md": "16px",
+            "container-margin": "20px",
+            "sm": "12px",
+            "lg": "24px",
+            "base": "8px",
+            "xl": "32px",
+            "xs": "4px",
+            "gutter": "16px"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at top right, #e8deff 0%, transparent 70%);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center">
+<!-- Main Canvas -->
+<main class="w-full max-w-md mx-auto min-h-screen flex flex-col hero-gradient">
+<!-- Hero Illustration Section -->
+<section class="flex-1 flex flex-col items-center justify-center px-container-margin pt-xl">
+<div class="relative w-full aspect-square max-h-[320px] mb-lg rounded-xl overflow-hidden shadow-sm border border-outline-variant/30">
+<img alt="Healthcare Illustration" class="w-full h-full object-cover" data-alt="A clean and modern high-key medical illustration featuring soft pastel Amethyst and Teal colors. A friendly healthcare professional is seen organizing digital pill containers in a minimalist, airy clinical environment. The lighting is warm and bright, conveying a sense of calm reliability and human warmth. The overall aesthetic is professional, corporate-modern, and highly legible, using generous whitespace to focus on precision and care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZe2n7tStayRq2gQZfxMgKYYeJ_0Sl3oFkBlk3yEQMVriw9QPZYAcUCTpg37kmWqkCVH4j4qsMxGR4gR5n1r3h3nsjvlekA517BMGsGdKY43fk2JJ4sscmL-i8FybARs3IyC-iXtUXzfQ_GiYpAwkrHQSFxtWSdCMNVLqKZLUGP8hxrnwqUrge3nkkwCMBeolwVqEvywzkVUO25LoBYvQZ42FpbBBZnLpKfurr0PUgOdzokRD4ZBySLZ37a-7DX02cJWG4y74HP8g"/>
+</div>
+<div class="text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-xs tracking-tight">MedTrack</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Never miss a dose again.</p>
+</div>
+</section>
+<!-- Interactive Onboarding Section -->
+<section class="px-container-margin pb-xl space-y-lg">
+<!-- Permission Previews (Bento-style chips) -->
+<div class="grid grid-cols-2 gap-sm">
+<div class="glass-card border border-outline-variant rounded-xl p-md flex flex-col items-center text-center shadow-sm">
+<div class="bg-primary-fixed-dim text-on-primary-fixed-variant rounded-full p-sm mb-base">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Notifications</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Instant alerts</span>
+</div>
+<div class="glass-card border border-outline-variant rounded-xl p-md flex flex-col items-center text-center shadow-sm">
+<div class="bg-secondary-fixed text-on-secondary-fixed-variant rounded-full p-sm mb-base">
+<span class="material-symbols-outlined">alarm</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Alarms</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Precise timing</span>
+</div>
+</div>
+<!-- Action Area -->
+<div class="space-y-md">
+<button class="w-full h-[56px] bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm rounded-full flex items-center justify-center gap-md shadow-md transition-transform active:scale-95 duration-150">
+<svg class="w-6 h-6" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="currentColor"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="currentColor"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="currentColor"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="currentColor"></path>
+</svg>
+          Sign in with Google
+        </button>
+<!-- Privacy Detail -->
+<div class="bg-surface-container-low rounded-xl p-md border border-outline-variant/50 flex gap-md">
+<span class="material-symbols-outlined text-primary shrink-0" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-xs">Google Drive Backup</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Your data stays with you. We use your Google Drive for secure, private backups.</p>
+</div>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="text-center">
+<p class="font-label-sm text-label-sm text-outline">
+          By signing in, you agree to our 
+          <a class="text-primary font-semibold underline" href="#">Terms</a> and 
+          <a class="text-primary font-semibold underline" href="#">Privacy Policy</a>
+</p>
+</div>
+</section>
+</main>
+<!-- Interactive Background Micro-animation -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Subtle parallax or hover effects could go here
+      const chips = document.querySelectorAll('.glass-card');
+      chips.forEach(chip => {
+        chip.addEventListener('mouseenter', () => {
+          chip.style.transform = 'translateY(-2px)';
+          chip.style.transition = 'transform 0.2s ease-out';
+        });
+        chip.addEventListener('mouseleave', () => {
+          chip.style.transform = 'translateY(0)';
+        });
+      });
+    });
+  </script>
+</body></html>
